@@ -8,11 +8,12 @@
 ### 预计特点
 * 轻量
 * 开发侵入少
+
 ***
 
 *参数定义*
 
-`
+```java
 package args;
 
 import org.msgpack.annotation.MessagePackMessage;
@@ -25,11 +26,12 @@ public class HelloArgs {
     public String name;
     public String words;
 }
-`
+```
 
 *具体实现*
 
-`package api;
+```java
+package api;
 
  import args.HelloArgs;
 
@@ -44,4 +46,5 @@ public class HelloArgs {
 
          return args.name + " says: " + args.words;
      }
- }`
+ }
+ ```
