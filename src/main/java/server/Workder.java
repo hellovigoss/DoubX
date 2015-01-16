@@ -22,10 +22,10 @@ public class Workder implements Runnable {
         try {
             InputStream input = this.socket.getInputStream();
             input.read(bytes);
-            RpcServer rpcServer = new RpcServer();
+            Router router = new Router();
             try {
                 System.out.println("new thread "+ Thread.currentThread().getId() + " init");
-                byte[] outbytes = rpcServer.callback(bytes);
+                byte[] outbytes = router.dispatch(bytes);
                 OutputStream output = this.socket.getOutputStream();
                 output.write(outbytes);
                 output.flush();

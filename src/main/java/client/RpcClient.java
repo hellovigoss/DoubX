@@ -1,13 +1,10 @@
 package client;
 
-import javassist.bytecode.ByteArray;
-import message.CallMessage;
+import server.CommandMsg;
 import org.msgpack.MessagePack;
-import sun.nio.ByteBuffered;
 
 import java.io.*;
 import java.net.*;
-import java.nio.ByteBuffer;
 
 /**
  * Created by yedai on 15-1-15.
@@ -22,7 +19,7 @@ public class RpcClient<T> {
 
     public Object call(String dst, T args, Class type) throws Exception{
         MessagePack mp = new MessagePack();
-        CallMessage cm = new CallMessage();
+        CommandMsg cm = new CommandMsg();
         cm.dst = dst;
         cm.args = mp.write(args);
 
