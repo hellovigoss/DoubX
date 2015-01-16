@@ -12,9 +12,9 @@ public abstract class Api<T> {
 
     protected T args;
     public T run(byte[] raw) throws ClassNotFoundException, IOException {
-
+        MessagePack mp = new MessagePack();
         String argsClassName = this.getClass().getName().replaceAll("api", "args") + "Args";
-        this.args = (T) MessagePack.unpack(raw, Class.forName(argsClassName));
+        this.args = (T) mp.read(raw, Class.forName(argsClassName));
         return (T) this.render(this.work());
     }
 
